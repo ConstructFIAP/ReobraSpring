@@ -12,18 +12,21 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="tbl_loja")
+@Table(name="reobra_loja")
 public class Loja {
     @Id
     @SequenceGenerator(name = "seqLoja", sequenceName = "seqLoja", initialValue = 1, allocationSize = 1)
     @GeneratedValue(generator = "seqLoja")
-    @Column(name="loja_id")
+    @Column(name="id")
     private Long id;
 
-    @Column
-    private String razao_social;
+    @Column(name="contato_id")
+    private int razao_social;
 
-    @Column(unique = true)
-    private String cnpj;
+    @Column(name = "endereco_id")
+    private int endereco_id;
+
+    @Column(name="nome")
+    private String nome;
     
 }
