@@ -1,4 +1,4 @@
-package br.com.reobra;
+package com.br.reobra;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

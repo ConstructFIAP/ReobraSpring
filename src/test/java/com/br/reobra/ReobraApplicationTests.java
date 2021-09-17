@@ -1,10 +1,10 @@
-package br.com.reobra.cyrella;
+package com.br.reobra;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CyrellaApplicationTests {
+class ReobraApplicationTests {
 
 	@Test
 	void contextLoads() {
