@@ -1,4 +1,4 @@
-package com.br.reobra;
+package br.com.reobra;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
