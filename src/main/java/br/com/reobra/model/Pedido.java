@@ -6,14 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="reobra_pedido")
+@Table(name="reobra_simples_pedido")
 public class Pedido {
 
     @Id
@@ -24,12 +23,5 @@ public class Pedido {
 
     @Column(name="data_pedido")
     private String data_pedido;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_loja")
-    private Loja loja;
-
-    @OneToMany(mappedBy = "pedido")
-    private List<DetalhePedido> detalhesPedido;
 
 }

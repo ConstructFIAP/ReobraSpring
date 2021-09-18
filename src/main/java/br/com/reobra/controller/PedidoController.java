@@ -3,13 +3,11 @@ package br.com.reobra.controller;
 
 import br.com.reobra.model.Pedido;
 import br.com.reobra.repository.PedidoRepository;
-import br.com.reobra.service.PedidoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/reobra")
@@ -36,13 +34,6 @@ public class PedidoController {
     public ResponseEntity<Pedido> salvarPedido(@RequestBody Pedido pedido) {
         Pedido novoPedido = pedidoRepository.save(pedido);
         return new ResponseEntity<Pedido>(novoPedido, HttpStatus.CREATED);
-    }
-
-    @GetMapping("/pedidoTeste")
-    public void teste() {
-        Pedido pedido = pedidoRepository.getById(1L);
-        PedidoService pedidoService = new PedidoService();
-        pedidoService.salvarPedido(pedido);
     }
 
 }

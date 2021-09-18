@@ -6,13 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="reobra_produto")
+@Table(name="reobra_simples_produto")
 public class Produto {
 
     @Id
@@ -26,5 +27,11 @@ public class Produto {
 
     @Column(name="descricao")
     private String descricao;
+
+    @Column(name="preco")
+    private BigDecimal preco;
+
+    @Column(name="caminho_imagem")
+    private String caminho_imagem;
 
 }
