@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -14,6 +15,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name="reobra_pedido")
 public class Pedido {
+
     @Id
     @SequenceGenerator(name = "seqPedido", sequenceName = "seqPedido", initialValue = 1, allocationSize = 1)
     @GeneratedValue(generator = "seqPedido")
@@ -23,7 +25,11 @@ public class Pedido {
     @Column(name="data_pedido")
     private String data_pedido;
 
-    @Column(name = "id_loja")
-    private int id_loja;
+    @ManyToOne
+    @JoinColumn(name="id_loja")
+    private Loja loja;
+
+    @OneToMany(mappedBy = "pedido")
+    private List<DetalhePedido> detalhesPedido;
 
 }

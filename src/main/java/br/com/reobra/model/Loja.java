@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -28,5 +29,7 @@ public class Loja {
 
     @Column(name="nome")
     private String nome;
-    
+
+
+
 }
