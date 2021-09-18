@@ -2,6 +2,7 @@ package br.com.reobra.controller;
 
 
 import br.com.reobra.model.Loja;
+import br.com.reobra.model.Pedido;
 import br.com.reobra.repository.LojaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,16 +25,10 @@ public class LojaController {
         return new ResponseEntity<List<Loja>>(lojas, HttpStatus.OK);
     }
 
-    @PostMapping("/loja")
-    public ResponseEntity<Loja> salvarLoja(@RequestBody Loja loja) {
-        Loja novaLoja = lojaRepository.save(loja);
-        return new ResponseEntity<Loja>(novaLoja, HttpStatus.CREATED);
-    }
-
-    @DeleteMapping("/loja/{id}")
-    public ResponseEntity<?> excluirLojas(@PathVariable("id") long id) {
-        lojaRepository.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    @GetMapping("/loja/{id}")
+    public ResponseEntity<Loja> getLoja(@PathVariable("id") long id){
+        Loja loja = lojaRepository.getById(id);
+        return new ResponseEntity<Loja>(loja, HttpStatus.OK);
     }
 
 }
