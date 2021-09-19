@@ -1,11 +1,13 @@
 package br.com.reobra.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -23,5 +25,9 @@ public class Pedido {
 
     @Column(name="data_pedido")
     private String data_pedido;
+
+    @OneToMany(mappedBy = "pedido")
+    private List<DetalhePedido> produtos
+            ;
 
 }
