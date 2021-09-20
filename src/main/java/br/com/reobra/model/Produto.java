@@ -36,7 +36,7 @@ public class Produto {
     @Column(name="caminho_imagem")
     private String caminho_imagem;
 
-    @Column(name="estoque")
-    private int estoque;
+    @Column(name="quantidade")
+    private int quantidade;
 
 }
