@@ -1,5 +1,6 @@
 package br.com.reobra.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="reobra_produto")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Produto {
 
     @Id
