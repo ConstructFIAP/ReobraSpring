@@ -18,8 +18,9 @@ public class PedidoController {
     private PedidoRepository pedidoRepository;
     private ClienteRepository clienteRepository;
 
-    public PedidoController(PedidoRepository pedidoRepository) {
+    public PedidoController(PedidoRepository pedidoRepository, ClienteRepository clienteRepository) {
         this.pedidoRepository = pedidoRepository;
+        this.clienteRepository = clienteRepository;
     }
 
     @GetMapping("/pedido")
@@ -42,7 +43,7 @@ public class PedidoController {
 
     @GetMapping("/pedido/cliente/{idCliente}")
     public ResponseEntity<List<Pedido>> getPedidosPorCliente(@PathVariable("idCliente") long idCliente){
-        Cliente cliente = clienteRepository.getById(idCliente);
+23        Cliente cliente = clienteRepository.getById(idCliente);
         List<Pedido> pedidos = pedidoRepository.findByCliente(cliente);
         return new ResponseEntity<List<Pedido>>(pedidos, HttpStatus.OK);
     }
