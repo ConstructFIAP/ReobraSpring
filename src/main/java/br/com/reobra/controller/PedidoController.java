@@ -43,7 +43,7 @@ public class PedidoController {
 
     @GetMapping("/pedido/cliente/{idCliente}")
     public ResponseEntity<List<Pedido>> getPedidosPorCliente(@PathVariable("idCliente") long idCliente){
-23        Cliente cliente = clienteRepository.getById(idCliente);
+        Cliente cliente = clienteRepository.getById(idCliente);
         List<Pedido> pedidos = pedidoRepository.findByCliente(cliente);
         return new ResponseEntity<List<Pedido>>(pedidos, HttpStatus.OK);
     }
