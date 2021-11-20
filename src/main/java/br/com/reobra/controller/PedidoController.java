@@ -40,7 +40,7 @@ public class PedidoController {
         return new ResponseEntity<Pedido>(novoPedido, HttpStatus.CREATED);
     }
 
-    @GetMapping("/pedido/cliente/{id}")
+    @GetMapping("/pedido/cliente/{idCliente}")
     public ResponseEntity<List<Pedido>> getPedidosPorCliente(@PathVariable("idCliente") long idCliente){
         Cliente cliente = clienteRepository.getById(idCliente);
         List<Pedido> pedidos = pedidoRepository.findByCliente(cliente);
