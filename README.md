@@ -21,6 +21,8 @@ GET /reobra/pedido - listar todos os pedidos
 
 GET /reobra/pedido/{id} - detalhes de um pedido
 
+GET/reobra/pedido/cliente/{id} - listar todos os pedidos feitos por um cliente específico
+
 POST /reobra/pedido - salvar pedido
 
 ----
