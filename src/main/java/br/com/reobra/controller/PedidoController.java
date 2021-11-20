@@ -1,7 +1,9 @@
 package br.com.reobra.controller;
 
 
+import br.com.reobra.model.Cliente;
 import br.com.reobra.model.Pedido;
+import br.com.reobra.repository.ClienteRepository;
 import br.com.reobra.repository.PedidoRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +14,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/reobra")
 public class PedidoController {
+
     private PedidoRepository pedidoRepository;
+    private ClienteRepository clienteRepository;
 
     public PedidoController(PedidoRepository pedidoRepository) {
         this.pedidoRepository = pedidoRepository;
@@ -34,6 +38,13 @@ public class PedidoController {
     public ResponseEntity<Pedido> salvarPedido(@RequestBody Pedido pedido) {
         Pedido novoPedido = pedidoRepository.save(pedido);
         return new ResponseEntity<Pedido>(novoPedido, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/pedido/cliente/{id}")
+    public ResponseEntity<List<Pedido>> getPedidosPorCliente(@PathVariable("idCliente") long idCliente){
+        Cliente cliente = clienteRepository.getById(idCliente);
+        List<Pedido> pedidos = pedidoRepository.findByCliente(cliente);
+        return new ResponseEntity<List<Pedido>>(pedidos, HttpStatus.OK);
     }
 
 }
