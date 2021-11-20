@@ -6,6 +6,8 @@ import br.com.reobra.model.Produto;
 import br.com.reobra.model.ProdutoEstoque;
 import br.com.reobra.repository.LojaRepository;
 import br.com.reobra.repository.ProdutoRepository;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,8 +46,10 @@ public class ProdutoController {
     @RequestMapping(value = "/produto/imagem/{id}", method = RequestMethod.GET, produces = "image/jpg")
     public @ResponseBody byte[] getImagem(@PathVariable("id") long id)  {
         try {
+
             String nomeArquivo = produtoRepository.getById(id).getCaminho_imagem();
-            InputStream is = this.getClass().getResourceAsStream("/" + nomeArquivo);
+            Resource resource = new ClassPathResource(nomeArquivo);
+            InputStream is = resource.getInputStream();
             BufferedImage img = ImageIO.read(is);
             ByteArrayOutputStream bao = new ByteArrayOutputStream();
             ImageIO.write(img, "jpg", bao);
